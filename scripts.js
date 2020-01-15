@@ -8,19 +8,21 @@ $(function() {
     var confirmButton = $('#confirm-purchase');
     var visa = $("#visa");
     var amex = $("#amex");
-
-    // Use the payform library to format and validate
-    // the payment fields.
+    var discover = $("#discover");
 
     cardNumber.payform('formatCardNumber');
     CVV.payform('formatCardCVC');
 
 
+ //While typing fields are validated
     cardNumber.keyup(function() {
 
-        amex.removeClass('transparent');
-        visa.removeClass('transparent');
-        mastercard.removeClass('transparent');
+
+        //Card type function
+        amex.removeClass('hidden');
+        visa.removeClass('hidden');
+        mastercard.removeClass('hidden');
+        discover.removeClass('hidden');
 
         if ($.payform.validateCardNumber(cardNumber.val()) == false) {
             cardNumberField.addClass('has-error');
@@ -30,17 +32,31 @@ $(function() {
         }
 
         if ($.payform.parseCardType(cardNumber.val()) == 'visa') {
-            mastercard.addClass('transparent');
-            amex.addClass('transparent');
+            mastercard.addClass('hidden');
+            amex.addClass('hidden');
+            discover.addClass('hidden');
         } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
-            mastercard.addClass('transparent');
-            visa.addClass('transparent');
+            mastercard.addClass('hidden');
+            visa.addClass('hidden');
+            discover.addClass('hidden');
         } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
-            amex.addClass('transparent');
-            visa.addClass('transparent');
+            amex.addClass('hidden');
+            visa.addClass('hidden');
+            discover.addClass('hidden');
+        } else if ($.payform.parseCardType(cardNumber.val()) == 'discover') {
+            amex.addClass('hidden');
+            visa.addClass('hidden');
+            mastercard.addClass('hidden');
+        } else {
+            amex.addClass('hidden');
+            visa.addClass('hidden');
+            mastercard.addClass('hidden');
+            discover.addClass('hidden');
         }
     });
 
+
+//Checks for errors on
     confirmButton.click(function(e) {
 
         e.preventDefault();
@@ -49,11 +65,11 @@ $(function() {
         var isCvvValid = $.payform.validateCardCVC(CVV.val());
 
         if(owner.val().length < 5){
-            alert("Wrong owner name");
+            alert("Not a valid card holder.");
         } else if (!isCardValid) {
-            alert("Wrong card number");
+            alert("Not a valid card number.");
         } else if (!isCvvValid) {
-            alert("Wrong CVV");
+            alert("Not a valid CVC.");
         } else {
             // Everything is correct. Add your form submission code here.
             alert("Everything is correct");

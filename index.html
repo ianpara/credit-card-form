@@ -19,57 +19,66 @@
 <body>
 
     <div class="creditCardForm">
-        <div class="heading">
-            <h1>Confirm Purchase</h1>
-        </div>
-        <div class="payment">
-            <form>
-                <div class="form-group owner">
-                    <label for="owner">Owner</label>
-                    <input type="text" class="form-control" id="owner">
+        <div class="row">
+            <div class="col-50">
+                <div class="heading">
+                    <h1>Confirm Purchase</h1>
                 </div>
-                <div class="form-group CVV">
-                    <label for="cvv">CVV</label>
-                    <input type="text" class="form-control" id="cvv">
+                <div class="payment">
+                    <form autocomplete="on">
+                        <div class="form-group owner">
+                            <label for="owner">Owner</label>
+                            <input type="text" class="form-control" id="owner" required>
+                        </div>
+                        <div class="form-group" id="card-number-field">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="tel" class="form-control" id="cardNumber" required>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-5" id="expiration-date">
+                                <label>Expiration Date</label>
+                                <select required>
+                                    <option value="" disabled selected>Month</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February </option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                <select required>
+                                    <option value="" disabled selected>Year</option>
+                                    <option value="20"> 2020</option>
+                                    <option value="21"> 2021</option>
+                                    <option value="22"> 2022</option>
+                                    <option value="23"> 2023</option>
+                                    <option value="24"> 2024</option>
+                                    <option value="25"> 2025</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-50 CVV">
+                                <label for="cvv">CVC</label>
+                                <input type="tel" class="form-control" id="cvv" autocomplete="off" required>
+                            </div>
+                        </div>
+                        <div class="form-group" id="credit_cards">
+                            <img class="hidden" src="images/visa.png" id="visa" style="background-color: black; border-radius: 10px;">
+                            <img class="hidden" src="images/mastercard.png" id="mastercard" style="background-color: black; border-radius: 10px;">
+                            <img class="hidden" src="images/amex.png" id="amex" style="background-color: black; border-radius: 10px;">
+                            <img class="hidden" src="images/discover.png" id="discover" width="auto" height="50" style="background-color: black; border-radius: 10px;">
+                        </div>
+                        <div class="form-group" id="pay-now">
+                            <button type="submit" class="btn" id="confirm-purchase">Confirm</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group" id="card-number-field">
-                    <label for="cardNumber">Card Number</label>
-                    <input type="text" class="form-control" id="cardNumber">
-                </div>
-                <div class="form-group" id="expiration-date">
-                    <label>Expiration Date</label>
-                    <select>
-                        <option value="01">January</option>
-                        <option value="02">February </option>
-                        <option value="03">March</option>
-                        <option value="04">April</option>
-                        <option value="05">May</option>
-                        <option value="06">June</option>
-                        <option value="07">July</option>
-                        <option value="08">August</option>
-                        <option value="09">September</option>
-                        <option value="10">October</option>
-                        <option value="11">November</option>
-                        <option value="12">December</option>
-                    </select>
-                    <select>
-                        <option value="20"> 2020</option>
-                        <option value="21"> 2021</option>
-                        <option value="22"> 2022</option>
-                        <option value="23"> 2023</option>
-                        <option value="24"> 2024</option>
-                        <option value="25"> 2025</option>
-                    </select>
-                </div>
-                <div class="form-group" id="credit_cards">
-                    <img src="images/visa.jpg" id="visa">
-                    <img src="images/mastercard.jpg" id="mastercard">
-                    <img src="images/amex.jpg" id="amex">
-                </div>
-                <div class="form-group" id="pay-now">
-                    <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 
